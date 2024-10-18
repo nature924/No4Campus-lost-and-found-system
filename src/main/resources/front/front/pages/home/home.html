@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="utf-8">
+    <title>首页</title>
+    <meta name="description" content=""/>
+    <meta name="keywords" content=""/>
+    <meta name="author" content="order by mobanxiu.cn"/>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="../../layui/css/layui.css">
+    <link rel="stylesheet" href="../../xznstatic/css/common.css"/>
+    <link rel="stylesheet" href="../../xznstatic/css/style.css"/>
+    <link rel="stylesheet" href="../../xznstatic/css/animate.css"/><!-- 动画效果 -->
+    <link rel="stylesheet" href="../../xznstatic/css/swiper.min.css"/>
+    <script src="../../xznstatic/js/jquery-1.11.3.min.js"></script>
+    <script src="../../xznstatic/js/jquery.SuperSlide.2.1.1.js"></script>
+    <link rel="stylesheet" href="../../xznstatic/css/bootstrap.min.css"/>
+
+    <link rel="stylesheet" href="../../css/theme.css"/>
+</head>
+<style>
+    html::after {
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        content: '';
+        display: block;
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+    }
+
+    #test1 {
+        overflow: hidden;
+    }
+
+    /*轮播图css*/
+    #test1 .layui-carousel-ind li {
+        width: 20px;
+        height: 10px;
+        border-width: 0;
+        border-style: solid;
+        border-color: rgba(0, 0, 0, .3);
+        border-radius: 6px;
+        background-color: #f7f7f7;
+        box-shadow: 0 0 6px rgba(255, 0, 0, .8);
+    }
+
+    #test1 .layui-carousel-ind li.layui-this {
+        width: 30px;
+        height: 10px;
+        border-width: 0;
+        border-style: solid;
+        border-color: rgba(0, 0, 0, .3);
+        border-radius: 6px;
+    }
+
+    .layui-carousel-ind{
+        top: 0;
+
+    }
+    .layui-carousel-ind ul{
+        position: absolute;
+
+        bottom: 8px !important;
+        z-index: 10;
+    }
+
+    .title {
+        padding: 10px 5px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+
+   .title span {
+        padding: 0 10px;
+        line-height: 1.4;
+    }
+
+   .box .list {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+
+
+
+    .box .list img {
+        width: 100%;
+        height: 100px;
+        display: block;
+        margin: 0 auto;
+        object-fit: cover;
+        max-width: 100%;
+    }
+
+    .box .list .name {
+        padding-top: 5px;
+        color: red;
+        font-size: 14px;
+        text-align: center;
+        box-sizing: border-box;
+    }
+
+
+    .box .list .list-item {
+        flex: 0 0 25%;
+        padding: 0 10px;
+        box-sizing: border-box;
+    }
+
+    /*
+   .box .list .list-item-body {
+        border: 1px solid rgba(0, 0, 0, 3);
+        padding: 5px;
+        box-sizing: border-box;
+        cursor: pointer;
+   }
+    .box .list .list-item .list-item-body {
+        border: 1px solid rgba(0, 0, 0, 3);
+        padding: 10px;
+        box-sizing: border-box;
+        display: flex;
+        cursor: pointer;
+    }
+
+    .box .list .list-item .list-item-body img {
+        width: 120px;
+        height: 100%;
+        display: block;
+        margin: 0 auto;
+        object-fit: cover;
+        max-width: 100%;
+    }
+
+    .box .list .list-item .list-item-body .item-info {
+        flex: 1;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        padding-left: 10px;
+        box-sizing: border-box;
+    }
+
+    .box .list .list-item .list-item-body .item-info .name {
+        padding-top: 5px;
+        color: red;
+        font-size: 14px;
+        box-sizing: border-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+    }
+    .box .list .list-item .list-item-body .item-info .time {
+        padding-top: 5px;
+        color: red;
+        font-size: 14px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+    }
+    #new-list-6 .swiper-wrapper {
+        -webkit-transition-timing-function: linear;
+        -moz-transition-timing-function: linear;
+        -ms-transition-timing-function: linear;
+        -o-transition-timing-function: linear;
+        transition-timing-function: linear;
+    }*/
+
+    .list-item1 {
+        flex: 0 0 100%;
+    }
+    .list-item2 {
+        flex: 0 0 50%;
+    }
+    .list-item3 {
+        flex: 0 0 33.3%;
+    }
+    .list-item4 {
+        flex: 0 0 25%;
+    }
+    .list-item5 {
+        flex: 0 0 20%;
+    }
+    /*限制内容长度*/
+    .line1 {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 1;
+        overflow: hidden;
+    }
+    .line2 {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        overflow: hidden;
+    }
+    .line3 {
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
+    }
+    /*轮播图css*/
+    /*套装样式*/
+    /*腰线*/
+    /*home页面主要样式*/
+    /*home页面普通数据样式*/
+    /*home页面新闻数据样式*/
+</style>
+<body>
+<div id="app" >
+    <div class="banner">
+
+        <div class="layui-carousel" id="test1" style="height: 800px !important;position: relative;" :style='{"boxShadow":"0 0 0px rgba(255,0,0,.8)","margin":"0 auto","borderColor":"rgba(0,0,0,.3)","borderRadius":"0px","borderWidth":"0","width":"100%","borderStyle":"solid"}'>
+            <div carousel-item class="slideInLeft" style="visibility: visible; animation-duration: 3s; animation-name: slideInLeft;height: 800px">
+                <div v-for="(item,index) in swiperList" :key="index">
+                    <img style="width: 100%;height: 100%;object-fit:cover;" :src="baseUrl+item.img"/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="content">
+                <div style="display: flex;justify-content: center;background-repeat: no-repeat;background-position: center center;background-size: cover;">
+                    <div class="box" style='width:100%;'>
+                        <div style="width: 1200px;height: auto;margin:  0 auto;padding: 10px 0">
+                            <div class="wow " data-wow-duration="2s" data-wow-delay="1s">
+<div class="title" :style='{"padding":"10px 0 ","boxShadow":"#fff 0px 0px 6px","margin":"40px 20% 50px","borderColor":"rgba(0,0,0,1)","backgroundColor":"var(--publicSubColor)","color":"rgba(242, 242, 242, 1)","borderRadius":"50%","alignItems":"center","borderWidth":"0","fontSize":"28px","borderStyle":"solid"}'>
+     <span>NEWS</span>
+    <span>公告信息展示</span>
+</div>                            </div>
+                            <div class="wow " data-wow-duration="2s" data-wow-delay="1s">
+<div v-if="newsList.length" class="new-list-4" style="display: flex;flex-direction: column;align-items: center;">
+    <div class="new-list-body"style="display: flex;flex-wrap: wrap;align-items: center;display: flex;width: 100%;">
+        <div @click="jump('../news/detail.html?id='+newsList[0].id)" v-if="newsList.length>0" class="new-list-item animation-box" :style='{"padding":"0","boxShadow":"0px 3px 6px rgba(0, 0, 0, 0.16)","margin":"0  auto","borderColor":"#ccc","backgroundColor":"rgba(255, 255, 255, 0)","borderRadius":"50%","borderWidth":"0","width":"330px","borderStyle":"solid","height":"330px"}'>
+            <div style="box-sizing: border-box;" :style='{"padding":"0 20px","boxShadow":"0 0 6px rgba(0,0,0,0)","margin":"30px 0 20px","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(0, 0, 0, 1)","textAlign":"center","borderRadius":"0","borderWidth":"0","width":"100%","lineHeight":"44px","fontSize":"18px","borderStyle":"solid"}' class="new-list-item-title line1">{{newsList[0].newsName}}</div>
+            <div style="box-sizing: border-box;" :style='{"padding":"0 20px","boxShadow":"0 0 6px rgba(0,0,0,0)","margin":"10px 0","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(156, 156, 156, 1)","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"100%","lineHeight":"32px","fontSize":"14px","borderStyle":"solid"}' class="descript line3" v-html="myFilters(newsList[0].newsContent)"></div>
+            <div style="box-sizing: border-box;" :style='{"padding":"0 10px","boxShadow":"0 0 6px rgba(0,0,0,0)","margin":"10px 0","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(156, 156, 156, 1)","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"100%","lineHeight":"44px","fontSize":"12px","borderStyle":"solid"}' class="time">{{newsList[0].insertTime}}<span style="float:right;margin-right: 10px">{{newsList[0].newsValue}}</span></div>
+        </div>
+        <div @click="jump('../news/detail.html?id='+newsList[0].id)" v-if="newsList.length>0" class="new-list-item animation-box" :style='{"padding":"0","boxShadow":"0px 3px 6px rgba(0, 0, 0, 0.16)","margin":"0  auto","borderColor":"#ccc","backgroundColor":"rgba(255, 255, 255, 0)","borderRadius":"50%","borderWidth":"0","width":"330px","borderStyle":"solid","height":"330px"}'>
+            <img :style='{"padding":"0","boxShadow":"0 0 6px rgba(0,0,0,.3)","margin":"0","borderColor":"rgba(0, 0, 0, 0.5)","backgroundColor":"rgba(0,0,0,0)","borderRadius":"50%","borderWidth":"0","width":"100%","borderStyle":"solid","height":"100%"}' style="width: 100%;height: 100%;object-fit: cover;" :src="baseUrl+newsList[0].newsPhoto" alt="">
+        </div>
+        <div @click="jump('../news/detail.html?id='+newsList[1].id)" v-if="newsList.length>1" class="new-list-item animation-box" :style='{"padding":"0","boxShadow":"0px 3px 6px rgba(0, 0, 0, 0.16)","margin":"0  auto","borderColor":"#ccc","backgroundColor":"rgba(255, 255, 255, 0)","borderRadius":"50%","borderWidth":"0","width":"330px","borderStyle":"solid","height":"330px"}'>
+            <div style="box-sizing: border-box;" :style='{"padding":"0 20px","boxShadow":"0 0 6px rgab(0,0,0,0)","margin":"30px 0 20px","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(0, 0, 0, 1)","textAlign":"center","borderRadius":"0","borderWidth":"0","width":"100%","lineHeight":"44px","fontSize":"18px","borderStyle":"solid"}' class="new-list-item-title line1">{{newsList[1].newsName}}</div>
+            <div style="box-sizing: border-box;" :style='{"padding":"0 20px","boxShadow":"0 0 6px rgba(0,0,0,0)","margin":"10px 0","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(156, 156, 156, 1)","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"100%","lineHeight":"32px","fontSize":"14px","borderStyle":"solid"}' class="descript line3" v-html="myFilters(newsList[1].newsContent)"></div>
+            <div style="box-sizing: border-box;" :style='{"padding":"0 10px","boxShadow":"0 0 6px rgba(0,0,0,0)","margin":"10px 0","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(156, 156, 156, 1)","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"100%","lineHeight":"44px","fontSize":"12px","borderStyle":"solid"}' class="time">{{newsList[1].insertTime}}<span style="float:right;margin-right: 10px">{{newsList[1].newsValue}}</span></div>
+        </div>
+    </div>
+    <div class="new-list-body"style="display: flex;flex-wrap: wrap;align-items: center;display: flex;width: 100%">
+        <div @click="jump('../news/detail.html?id='+newsList[1].id)" v-if="newsList.length>1" class="new-list-item animation-box" :style='{"padding":"0","boxShadow":"0px 3px 6px rgba(0, 0, 0, 0.16)","margin":"0  auto","borderColor":"#ccc","backgroundColor":"rgba(255, 255, 255, 0)","borderRadius":"50%","borderWidth":"0","width":"330px","borderStyle":"solid","height":"330px"}'>
+            <img :style='{"padding":"0","boxShadow":"0 0 6px rgba(0,0,0,.3)","margin":"0","borderColor":"rgba(0, 0, 0, 0.5)","backgroundColor":"rgba(0,0,0,0)","borderRadius":"50%","borderWidth":"0","width":"100%","borderStyle":"solid","height":"100%"}' style="width: 100%;height: 100%;object-fit: cover;" :src="baseUrl+newsList[1].newsPhoto" alt="">
+        </div>
+        <div @click="jump('../news/detail.html?id='+newsList[2].id)" v-if="newsList.length>2" class="new-list-item animation-box" :style='{"padding":"0","boxShadow":"0px 3px 6px rgba(0, 0, 0, 0.16)","margin":"0  auto","borderColor":"#ccc","backgroundColor":"rgba(255, 255, 255, 0)","borderRadius":"50%","borderWidth":"0","width":"330px","borderStyle":"solid","height":"330px"}'>
+            <div style="box-sizing: border-box;" :style='{"padding":"0 20px","boxShadow":"0 0 6px rgba(0,0,0,0)","margin":"30px 0 20px","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(0, 0, 0, 1)","textAlign":"center","borderRadius":"0","borderWidth":"0","width":"100%","lineHeight":"44px","fontSize":"18px","borderStyle":"solid"}' class="new-list-item-title line1">{{newsList[2].newsName}}</div>
+            <div style="box-sizing: border-box;" :style='{"padding":"0 20px","boxShadow":"0 0 6px rgba(0,0,0,0)","margin":"10px 0","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(156, 156, 156, 1)","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"100%","lineHeight":"32px","fontSize":"14px","borderStyle":"solid"}' class="descript line3" v-html="myFilters(newsList[2].newsContent)"></div>
+            <div style="box-sizing: border-box;" :style='{"padding":"0 10px","boxShadow":"0 0 6px rgba(0,0,0,0)","margin":"10px 0","borderColor":"#ccc","backgroundColor":"rgba(0,0,0,0)","color":"rgba(156, 156, 156, 1)","textAlign":"left","borderRadius":"0","borderWidth":"0","width":"100%","lineHeight":"44px","fontSize":"12px","borderStyle":"solid"}' class="time">{{newsList[2].insertTime}}<span style="float:right;margin-right: 10px">{{newsList[2].newsValue}}</span></div>
+        </div>
+        <div @click="jump('../news/detail.html?id='+newsList[2].id)" v-if="newsList.length>2" class="new-list-item animation-box" :style='{"padding":"0","boxShadow":"0px 3px 6px rgba(0, 0, 0, 0.16)","margin":"0  auto","borderColor":"#ccc","backgroundColor":"rgba(255, 255, 255, 0)","borderRadius":"50%","borderWidth":"0","width":"330px","borderStyle":"solid","height":"330px"}'>
+            <img :style='{"padding":"0","boxShadow":"0 0 6px rgba(0,0,0,.3)","margin":"0","borderColor":"rgba(0, 0, 0, 0.5)","backgroundColor":"rgba(0,0,0,0)","borderRadius":"50%","borderWidth":"0","width":"100%","borderStyle":"solid","height":"100%"}' style="width: 100%;height: 100%;object-fit: cover;" :src="baseUrl+newsList[2].newsPhoto" alt="">
+        </div>
+    </div>
+</div>                                <div style="margin-top:40px;text-align: center;">
+                                    <button @click="jump('../news/list.html')" style="display: block;cursor: pointer;" type="button" :style='{"padding":"0 15px","boxShadow":"0 0 6px rgba(255,0,0,0)","margin":"4px auto","borderColor":"#ccc","backgroundColor":"#fff","color":"rgba(160, 67, 26, 1)","borderRadius":"6px","borderWidth":"0","width":"auto","fontSize":"14px","borderStyle":"solid","height":"34px"}'>
+                                        查看更多
+                                        <i :style='{"isshow":true,"padding":"0 0 0 1px","fontSize":"14px","color":"rgba(160, 67, 26, 1)"}' class="layui-icon layui-icon-next"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex;justify-content: center;background-repeat: no-repeat;background-position: center center;background-size: cover;">
+                    <div class="box" style='width:100%;'>
+                        <div style="width: 1200px;height:auto;margin:  0 auto;padding: 10px 0">
+                            <div class="wow " data-wow-duration="2s" data-wow-delay="1s">
+<div class="title" :style='{"padding":"10px 0 ","boxShadow":"#fff 0px 0px 6px","margin":"40px 20% 50px","borderColor":"rgba(0,0,0,1)","backgroundColor":"var(--publicSubColor)","color":"rgba(242, 242, 242, 1)","borderRadius":"50%","alignItems":"center","borderWidth":"0","fontSize":"28px","borderStyle":"solid"}'>
+        <span>DATA SHOW</span>
+    <span>寻物启事展示</span>
+</div>                            </div>
+                            <div class="wow " data-wow-duration="2s" data-wow-delay="1s">
+                <div class="list">
+                    <div v-for="(item,index) in xunwuqishiList" :key="index"
+                         @click="jump('../xunwuqishi/detail.html?id='+item.id)" class="list-item"
+                         :class="4=='3'?'list-item3':4=='4'?'list-item4':''">
+                        <div class="list-item-body animation-box"
+                             :style='{"padding":"0px 0 6px 0","boxShadow":"","margin":"20px 4px","borderColor":"rgba(0,0,0,.3)","backgroundColor":"#fff","borderRadius":"4px","borderWidth":"0","borderStyle":"solid"}'>
+                            <img class="sub_borderColor" :style='{"borderColor":"rgba(0,0,0,.3)","borderRadius":"100%","borderWidth":"0","width":"220px","borderStyle":"solid","height":"220px"}'
+                                 :src="item.xunwuqishiPhoto?baseUrl+item.xunwuqishiPhoto.split(',')[0]:''" alt=""/>
+                            <div v-if='true'
+                                 :style='{"isshow":true,"padding":"2px","margin":"8px 0 0 0","backgroundColor":"rgba(255, 255, 255, 0.2)","color":"rgba(51, 51, 51, 1)","borderRadius":"0 0 6px 6px","textAlign":"center","fontSize":"20px"}'
+                                 class="name">{{item.xunwuqishiName}}
+                            </div>
+                        </div>
+                    </div>
+                </div>                                <div style="text-align: center;margin-top: 40px;">
+                                    <button @click="jump('../xunwuqishi/list.html')" style="display: block;cursor: pointer;" type="button"
+                                            :style='{"padding":"0 15px","boxShadow":"0 0 6px rgba(255,0,0,0)","margin":"4px auto","borderColor":"#ccc","backgroundColor":"#fff","color":"rgba(160, 67, 26, 1)","borderRadius":"6px","borderWidth":"0","width":"auto","fontSize":"14px","borderStyle":"solid","height":"34px"}'>
+                                        查看更多
+                                        <i :style='{"isshow":true,"padding":"0 0 0 1px","fontSize":"14px","color":"rgba(160, 67, 26, 1)"}' class="layui-icon layui-icon-next"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex;justify-content: center;background-repeat: no-repeat;background-position: center center;background-size: cover;">
+                    <div class="box" style='width:100%;'>
+                        <div style="width: 1200px;height:auto;margin:  0 auto;padding: 10px 0">
+                            <div class="wow " data-wow-duration="2s" data-wow-delay="1s">
+<div class="title" :style='{"padding":"10px 0 ","boxShadow":"#fff 0px 0px 6px","margin":"40px 20% 50px","borderColor":"rgba(0,0,0,1)","backgroundColor":"var(--publicSubColor)","color":"rgba(242, 242, 242, 1)","borderRadius":"50%","alignItems":"center","borderWidth":"0","fontSize":"28px","borderStyle":"solid"}'>
+        <span>DATA SHOW</span>
+    <span>失物信息展示</span>
+</div>                            </div>
+                            <div class="wow " data-wow-duration="2s" data-wow-delay="1s">
+                <div class="list">
+                    <div v-for="(item,index) in shiwuzhaolingList" :key="index"
+                         @click="jump('../shiwuzhaoling/detail.html?id='+item.id)" class="list-item"
+                         :class="4=='3'?'list-item3':4=='4'?'list-item4':''">
+                        <div class="list-item-body animation-box"
+                             :style='{"padding":"0px 0 6px 0","boxShadow":"","margin":"20px 4px","borderColor":"rgba(0,0,0,.3)","backgroundColor":"#fff","borderRadius":"4px","borderWidth":"0","borderStyle":"solid"}'>
+                            <img class="sub_borderColor" :style='{"borderColor":"rgba(0,0,0,.3)","borderRadius":"100%","borderWidth":"0","width":"220px","borderStyle":"solid","height":"220px"}'
+                                 :src="item.shiwuzhaolingPhoto?baseUrl+item.shiwuzhaolingPhoto.split(',')[0]:''" alt=""/>
+                            <div v-if='true'
+                                 :style='{"isshow":true,"padding":"2px","margin":"8px 0 0 0","backgroundColor":"rgba(255, 255, 255, 0.2)","color":"rgba(51, 51, 51, 1)","borderRadius":"0 0 6px 6px","textAlign":"center","fontSize":"20px"}'
+                                 class="name">{{item.shiwuzhaolingName}}
+                            </div>
+                        </div>
+                    </div>
+                </div>                                <div style="text-align: center;margin-top: 40px;">
+                                    <button @click="jump('../shiwuzhaoling/list.html')" style="display: block;cursor: pointer;" type="button"
+                                            :style='{"padding":"0 15px","boxShadow":"0 0 6px rgba(255,0,0,0)","margin":"4px auto","borderColor":"#ccc","backgroundColor":"#fff","color":"rgba(160, 67, 26, 1)","borderRadius":"6px","borderWidth":"0","width":"auto","fontSize":"14px","borderStyle":"solid","height":"34px"}'>
+                                        查看更多
+                                        <i :style='{"isshow":true,"padding":"0 0 0 1px","fontSize":"14px","color":"rgba(160, 67, 26, 1)"}' class="layui-icon layui-icon-next"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    </div>
+</div>
+
+<script src="../../xznstatic/js/bootstrap.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../xznstatic/js/echarts.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../../layui/layui.js"></script>
+<script src="../../js/vue.js"></script>
+<!-- 引入element组件库 -->
+<script src="../../xznstatic/js/element.min.js"></script>
+<!-- 引入element样式 -->
+<link rel="stylesheet" href="../../xznstatic/css/element.min.css">
+<script src="../../xznstatic/js/swiper.min.js"></script>
+<script src="../../js/config.js"></script>
+<script src="../../modules/config.js"></script>
+<script src="../../js/utils.js"></script>
+<script src="../../xznstatic/js/wow.min.js"></script>
+<script type="text/javascript">
+    // 动画效果
+    new WOW().init();
+
+    Vue.prototype.myFilters = function (msg) {
+        if(msg==null || msg==""){
+            return "";
+        }else if (msg.length>20){
+            msg.replace(/\n/g, "<br>");
+            return msg.substring(0,20)+"......";
+        }else{
+            return msg.replace(/\n/g, "<br>");
+        }
+    };
+    var vue = new Vue({
+        el: '#app',
+        data: {
+            swiperList: [],
+            baseUrl:"",
+            // dianyingRecommend: [],
+            newsList: [],
+            newsTypesList: [],
+            xunwuqishiList: [],
+            xunwuqishiTypesList: [],
+            shiwuzhaolingList: [],
+            shiwuzhaolingTypesList: [],
+            //类型查询条件
+            newsTypes: "",
+            xunwuqishiTypes: "",
+            shiwuzhaolingTypes: "",
+        },
+        filters: {
+            newsDesc: function (val) {
+                if (val) {
+                    val = val.replace(/<[^<>]+>/g, '').replace(/undefined/g, '');
+                    if (val.length > 60) {
+                        val = val.substring(0, 60);
+                    }
+
+                    return val;
+                }
+                return '';
+            }
+        },
+        methods: {
+            jump(url) {
+                jump(url)
+            }
+            , jumpCheck(url, check1, check2) {
+                if (check1 == "2" || check1 == 2) {//级联表的逻辑删除字段[1:未删除 2:已删除]
+                    layui.layer.msg("已经被删除", {
+                        time: 2000,
+                        icon: 2
+                    });
+                    return false;
+                }
+                if (check2 == "2" || check2 == 2) {//是否下架[1:上架 2:下架]
+                    layui.layer.msg("已经下架", {
+                        time: 2000,
+                        icon: 2
+                    });
+                    return false;
+                }
+                this.jump(url);
+            }
+        }
+    });
+
+    layui.use(['layer', 'form', 'element', 'carousel', 'http', 'jquery'], function () {
+        var layer = layui.layer;
+        var element = layui.element;
+        var form = layui.form;
+        var carousel = layui.carousel;
+        var http = layui.http;
+        var jquery = layui.jquery;
+        vue.baseUrl = http.baseurl
+
+        localStorage.setItem("goUtl","./pages/home/home.html")
+
+        // 获取轮播图 数据
+        http.request('config/list', 'get', {
+            page: 1,
+            limit: 5
+        }, function (res) {
+            if (res.data.list.length > 0) {
+                let swiperList = [];
+                res.data.list.forEach(element => {
+                    if (element.value != null
+                    ) {
+                        swiperList.push({
+                            img: element.value
+                        });
+                    }
+                })
+                ;
+
+                vue.swiperList = swiperList;
+
+                vue.$nextTick(() => {
+                    carousel.render({
+                        elem: '#test1',
+                        width: '100%',
+                        height: '100%',
+                        arrow: 'hover',
+                        anim: 'default',
+                        autoplay: 'true',
+                        interval: '3000',
+                        indicator: 'inside'
+                    });
+
+                })
+
+                // vue.$nextTick(()=>{
+                //   window.xznSlide();
+                // });
+            }
+        });
+
+        newsSelect();
+        //类型动态搜索
+        $(document).on("click", ".newsTypes-search", function(e) {
+            vue.newsTypes = $(this).attr('index');
+            newsSelect();
+        });
+        newsTypesSelect();//类型查询
+        xunwuqishiSelect();
+        //类型动态搜索
+        $(document).on("click", ".xunwuqishiTypes-search", function(e) {
+            vue.xunwuqishiTypes = $(this).attr('index');
+            xunwuqishiSelect();
+        });
+        xunwuqishiTypesSelect();//类型查询
+        shiwuzhaolingSelect();
+        //类型动态搜索
+        $(document).on("click", ".shiwuzhaolingTypes-search", function(e) {
+            vue.shiwuzhaolingTypes = $(this).attr('index');
+            shiwuzhaolingSelect();
+        });
+        shiwuzhaolingTypesSelect();//类型查询
+
+        function newsTypesSelect() {//类型查询
+            http.request("dictionary/page?page=1&limit=100&sort=&order=&dicCode=news_types",'get',{},function(res) {
+                if (res.code == 0) {vue.newsTypesList = res.data.list;}
+            });
+        }
+        function newsSelect(){//数据查询
+            http.request('news/list', 'get', {
+                page: 1,
+                limit: 8,
+                newsTypes: vue.newsTypes,//类型
+                order: "desc",//asc desc
+            },function (res) {
+                vue.newsList = res.data.list;
+            })
+        };
+        function xunwuqishiTypesSelect() {//类型查询
+            http.request("dictionary/page?page=1&limit=100&sort=&order=&dicCode=xunwuqishi_types",'get',{},function(res) {
+                if (res.code == 0) {vue.xunwuqishiTypesList = res.data.list;}
+            });
+        }
+        function xunwuqishiSelect(){//数据查询
+            http.request('xunwuqishi/list', 'get', {
+                page: 1,
+                limit: 8,
+                xunwuqishiTypes: vue.xunwuqishiTypes,//类型
+                order: "desc",//asc desc
+            },function (res) {
+                vue.xunwuqishiList = res.data.list;
+            })
+        };
+        function shiwuzhaolingTypesSelect() {//类型查询
+            http.request("dictionary/page?page=1&limit=100&sort=&order=&dicCode=shiwuzhaoling_types",'get',{},function(res) {
+                if (res.code == 0) {vue.shiwuzhaolingTypesList = res.data.list;}
+            });
+        }
+        function shiwuzhaolingSelect(){//数据查询
+            http.request('shiwuzhaoling/list', 'get', {
+                page: 1,
+                limit: 8,
+                shiwuzhaolingTypes: vue.shiwuzhaolingTypes,//类型
+                order: "desc",//asc desc
+            },function (res) {
+                vue.shiwuzhaolingList = res.data.list;
+            })
+        };
+
+    });
+
+    window.xznSlide = function () {
+        // jQuery(".banner").slide({mainCell:".bd ul",autoPlay:true,interTime:5000});
+        jQuery("#ifocus").slide({
+            titCell: "#ifocus_btn li",
+            mainCell: "#ifocus_piclist ul",
+            effect: "leftLoop",
+            delayTime: 200,
+            autoPlay: true,
+            triggerTime: 0
+        });
+        jQuery("#ifocus").slide({titCell: "#ifocus_btn li", mainCell: "#ifocus_tx ul", delayTime: 0, autoPlay: true});
+        jQuery(".product_list").slide({
+            mainCell: ".bd ul",
+            autoPage: true,
+            effect: "leftLoop",
+            autoPlay: true,
+            vis: 5,
+            trigger: "click",
+            interTime: 4000
+        });
+    };
+</script>
+<script src="../../xznstatic/js/index.js"></script>
+</body>
+</html>

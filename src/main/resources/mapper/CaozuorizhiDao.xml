@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.CaozuorizhiDao">
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        a.id as id
+        ,a.caozuorizhi_this_biao as caozuorizhiThisBiao
+        ,a.caozuorizhi_caozuobiao as caozuorizhiCaozuobiao
+        ,a.caozuorizhi_caozuozhanghu as caozuorizhiCaozuozhanghu
+        ,a.caozuorizhi_caozuoleixing as caozuorizhiCaozuoleixing
+        ,a.caozuorizhi_text as caozuorizhiText
+        ,a.insert_time as insertTime
+        ,a.create_time as createTime
+    </sql>
+    <select id="selectListView" parameterType="map" resultType="com.entity.view.CaozuorizhiView" >
+        SELECT
+        <include refid="Base_Column_List" />
+        <!-- 级联表的字段 -->
+
+        FROM caozuorizhi  a
+
+        <where>
+            <if test="params.ids != null">
+                and a.id in
+                <foreach item="item" index="index" collection="params.ids" open="(" separator="," close=")">
+                #{item}
+                </foreach>
+            </if>
+            <if test=" params.caozuorizhiThisBiao != '' and params.caozuorizhiThisBiao != null and params.caozuorizhiThisBiao != 'null' ">
+                and a.caozuorizhi_this_biao like CONCAT('%',#{params.caozuorizhiThisBiao},'%')
+            </if>
+            <if test=" params.caozuorizhiCaozuobiao != '' and params.caozuorizhiCaozuobiao != null and params.caozuorizhiCaozuobiao != 'null' ">
+                and a.caozuorizhi_caozuobiao like CONCAT('%',#{params.caozuorizhiCaozuobiao},'%')
+            </if>
+            <if test=" params.caozuorizhiCaozuozhanghu != '' and params.caozuorizhiCaozuozhanghu != null and params.caozuorizhiCaozuozhanghu != 'null' ">
+                and a.caozuorizhi_caozuozhanghu like CONCAT('%',#{params.caozuorizhiCaozuozhanghu},'%')
+            </if>
+            <if test=" params.caozuorizhiCaozuoleixing != '' and params.caozuorizhiCaozuoleixing != null and params.caozuorizhiCaozuoleixing != 'null' ">
+                and a.caozuorizhi_caozuoleixing like CONCAT('%',#{params.caozuorizhiCaozuoleixing},'%')
+            </if>
+            <if test=" params.caozuorizhiText != '' and params.caozuorizhiText != null and params.caozuorizhiText != 'null' ">
+                and a.caozuorizhi_text like CONCAT('%',#{params.caozuorizhiText},'%')
+            </if>
+            <if test=" params.insertTimeStart != '' and params.insertTimeStart != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(a.insert_time) >= UNIX_TIMESTAMP(#{params.insertTimeStart}) ]]>
+            </if>
+            <if test=" params.insertTimeEnd != '' and params.insertTimeEnd != null ">
+                <![CDATA[  and UNIX_TIMESTAMP(a.insert_time) <= UNIX_TIMESTAMP(#{params.insertTimeEnd}) ]]>
+            </if>
+            <if test="params.insertTime != null and params.insertTime != ''">
+                and a.insert_time = #{params.insertTime}
+            </if>
+
+        </where>
+        order by a.${params.sort} ${params.order}
+    </select>
+
+</mapper>
